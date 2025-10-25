@@ -6,6 +6,11 @@
     "abscissa": "bin/index.js"
   },
   "type": "module",
+  "scripts": {
+    "prebuild": "node -p \"'export const VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts",
+    "build": "npx rimraf bin && tsc -p tsconfig.json",
+    "prepare": "npm run build"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/slashinfty/abscissa.git"
@@ -24,6 +29,13 @@
     "ascii-table3": "^1.0.1",
     "chalk": "^5.6.2",
     "figlet": "^1.9.3",
-    "pdfmake": "^0.2.20"
+    "pdfmake": "^0.2.20",
+    "tournament-organizer": "^4.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.7.1",
+    "@types/pdfmake": "^0.2.11"
   }
 }
